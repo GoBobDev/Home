@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoBobDev</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0078D7, #00BFFF);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            animation: backgroundFadeIn 1s ease-in-out;
+        }
+        .window {
+            width: 0;
+            height: 0;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: windowExpand 1.5s ease-in-out forwards;
+            position: relative;
+            z-index: 1;
+        }
+        .title-bar, .content {
+            opacity: 0;
+            animation: contentFadeIn 1s ease-in-out forwards;
+            animation-delay: 1.5s;
+        }
+        .title-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #E5E5E5;
+            padding: 10px 15px;
+        }
+        .title-bar .buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .title-bar .buttons div {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .title-bar .buttons .close {
+            background-color: #FF605C;
+        }
+        .title-bar .buttons .minimize {
+            background-color: #FFBD44;
+        }
+        .title-bar .buttons .maximize {
+            background-color: #00CA4E;
+        }
+        .title-bar .title {
+            font-size: 14px;
+            color: #666;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            color: #0078D7;
+        }
+        .projects, .social, .about {
+            margin: 20px 0;
+        }
+        .projects li, .social li, .about li {
+            margin: 10px 0;
+            transition: transform 0.3s, color 0.3s;
+        }
+        .projects li:hover, .social li:hover, .about li:hover {
+            transform: translateX(10px);
+            color: #0056a3;
+        }
+        a {
+            color: #0078D7;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .taskbar {
+            width: 100%;
+            background-color: #e0e0e0;
+            padding: 5px;
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        .taskbar .start-button {
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 3px 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: relative;
+            font-size: 12px;
+        }
+        .taskbar .start-button:hover {
+            background-color: #e0e0e0;
+        }
+        .taskbar .start-menu {
+            display: none;
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            width: 200px;
+            padding: 10px;
+        }
+        .taskbar .start-menu .coming-soon {
+            color: #888;
+            font-style: italic;
+            padding: 10px;
+        }
+        @keyframes backgroundFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes windowExpand {
+            from {
+                width: 0;
+                height: 0;
+                opacity: 0;
+            }
+            to {
+                width: 800px;
+                height: auto;
+                opacity: 1;
+            }
+        }
+        @keyframes contentFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="window">
+        <div class="title-bar">
+            <div class="buttons">
+                <div class="close"></div>
+                <div class="minimize"></div>
+                <div class="maximize"></div>
+            </div>
+            <div class="title">GoBobDev</div>
+        </div>
+        <div class="content">
+            <h2>Привет, я GoBobDev!</h2>
+            <p>Я увлечен разработкой программного обеспечения и созданием полезных инструментов для сообщества.</p>
+            <div class="about">
+                <h3>Обо мне</h3>
+                <p>Меня зовут GoBobDev, и я занимаюсь разработкой программного обеспечения. Моя цель - создавать приложения, которые делают жизнь проще и приятнее. В свободное время я люблю делиться своими знаниями и опытом с другими разработчиками через видео на YouTube и в Discord. Мои проекты всегда ориентированы на повышение удобства и функциональности для пользователей.</p>
+            </div>
+            <div class="projects">
+                <h3>Мои проекты</h3>
+                <ul>
+                    <li><a href="https://github.com/GoBobDev/LunaOS" download>Сборка Windows (LunaOS)</a></li>
+                    <li><a href="https://github.com/GoBobDev/LunaTools" download>LunaTools</a></li>
+                    <li onclick="alert('СКОРО! Подробности скоро!')">СКОРО!</li>
+                </ul>
+            </div>
+            <div class="social">
+                <h3>Социальные сети</h3>
+                <ul>
+                    <li><a href="https://www.youtube.com/@GoBobDev" target="_blank">YouTube: GoBobDev</a></li>
+                    <li><a href="https://discord.gg/mkSwvDt4vq" target="_blank">Discord: GoBobDev</a></li>
+                    <li><a href="https://github.com/GoBobDev" target="_blank">GitHub: GoBobDev</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="taskbar">
+        <div class="start-button" onclick="toggleStartMenu(event)">
+            <span>Пуск</span>
+            <div class="start-menu" id="start-menu">
+                <div class="coming-soon">Тут скоро что-то будет! Проверяйте почаще.</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Toggle Start Menu
+        function toggleStartMenu(event) {
+            event.stopPropagation();  // Останавливает всплытие события
+            const startMenu = document.getElementById('start-menu');
+            startMenu.style.display = startMenu.style.display === 'none' || startMenu.style.display === '' ? 'block' : 'none';
+        }
+
+        // Close Start Menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const startButton = document.querySelector('.start-button');
+            const startMenu = document.getElementById('start-menu');
+            if (!startButton.contains(event.target)) {
+                startMenu.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
