@@ -23,6 +23,9 @@
         <div class="theme-switch" onclick="toggleTheme()">Темная тема</div>
     </header>
     <main>
+        <div id="mobile-message" style="display: none; color: red;">
+            Пожалуйста, зайдите с компьютера для полного доступа к сайту.
+        </div>
         <div class="card">
             <img src="screenshot_xtweaker.png" alt="XTweaker Screenshot">
             <div class="info">
@@ -47,7 +50,7 @@
             <div class="info">
                 <div class="details">
                     <h2>Скоро!</h2>
-                    <p>Возможно. здесь что-то будет.</p>
+                    <p>Возможно, здесь что-то будет.</p>
                 </div>
                 <a href="#">Скачать</a>
             </div>
@@ -86,6 +89,14 @@
         function closeModal() {
             document.getElementById('downloadModal').classList.remove('show');
         }
+
+        function checkMobile() {
+            if (/Mobi|Android/i.test(navigator.userAgent)) {
+                document.getElementById('mobile-message').style.display = 'block';
+            }
+        }
+
+        checkMobile();
     </script>
 </body>
 </html>
