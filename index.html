@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мои программы</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body.blurred *:not(#mobile-message) {
+            filter: blur(5px);
+            pointer-events: none;
+        }
+        #mobile-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -23,7 +39,7 @@
         <div class="theme-switch" onclick="toggleTheme()">Темная тема</div>
     </header>
     <main>
-        <div id="mobile-message" style="display: none; color: red;">
+        <div id="mobile-message" style="display: none;">
             Пожалуйста, зайдите с компьютера для полного доступа к сайту.
         </div>
         <div class="card">
@@ -67,10 +83,6 @@
             <a href="https://github.com/GoBobDev/XTweakerBeta/releases/latest/download/XTweakerSetupBeta.exe">Beta версия</a>
         </div>
     </div>
-    <title>Мои программы</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-    </main>
     <script>
         function toggleTheme() {
             document.body.classList.toggle('dark');
@@ -92,6 +104,7 @@
 
         function checkMobile() {
             if (/Mobi|Android/i.test(navigator.userAgent)) {
+                document.body.classList.add('blurred');
                 document.getElementById('mobile-message').style.display = 'block';
             }
         }
