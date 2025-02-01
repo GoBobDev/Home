@@ -3,36 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мои программы</title>
+    <title>Домашняя страница</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .blur-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            z-index: 999;
-        }
-        #mobile-message {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 5px;
-            z-index: 1000;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
-    <div id="blur-background" class="blur-background" style="display: none;"></div>
     <header>
-        <h1>Мои программы</h1>
+        <h1>Добро пожаловать!</h1>
         <div class="social-links">
             <a href="https://github.com/GoBobDev" target="_blank">
                 <img src="github_icon.png" alt="GitHub Icon">
@@ -47,77 +23,40 @@
         <div class="theme-switch" onclick="toggleTheme()">Темная тема</div>
     </header>
     <main>
-        <div id="mobile-message" style="display: none;">
-            Пожалуйста, зайдите с компьютера для полного доступа к сайту.
-        </div>
-        <div class="card">
-            <img src="screenshot_xtweaker.png" alt="XTweaker Screenshot">
-            <div class="info">
-                <div class="details">
-                    <h2>XTweaker</h2>
-                    <p>Инструмент для настройки Windows.</p>
+        <div class="centered-content">
+            <p class="header-text">Выберите страницу для перехода:</p>
+            <div class="button-row">
+                <div>
+                    <a href="https://gobobdev.github.io/programs">Программы</a>
+                    <p>Здесь программы от GoBobDev.</p>
                 </div>
-                <a onclick="showModal()">Скачать</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="screenshot_lunaclean.png" alt="LunaClean Screenshot">
-            <div class="info">
-                <div class="details">
-                    <h2>LunaClean</h2>
-                    <p>Программа для управлением ПК через трей.</p>
+                <div>
+                    <a href="https://gobobdev.github.io/mods">Сборки Windows</a>
+                    <p>Здесь сборки Windows от GoBobDev.</p>
                 </div>
-                <a href="https://github.com/GoBobDev/LunaClean/releases/latest/download/Setup.exe" class="download-btn">Скачать</a>
-            </div>
-        </div>
-        <div class="card gray disabled">
-            <div class="info">
-                <div class="details">
-                    <h2>Скоро!</h2>
-                    <p>Возможно, здесь что-то будет.</p>
+                <div>
+                    <a class="disabled">Скоро!</a>
+                    <p>Здесь что-то будет.</p>
                 </div>
-                <a href="#">Скачать</a>
             </div>
         </div>
     </main>
     <footer>
         <p>Сайт ещё не доделан!</p>
     </footer>
-    <div class="modal" id="downloadModal">
-        <div class="modal-content" id="modalContent">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
-            <h2>Выберите релиз</h2>
-            <a href="https://github.com/GoBobDev/XTweaker/releases/latest/download/XTweakerSetup.exe">Стабильная версия</a>
-            <a href="https://github.com/GoBobDev/XTweakerBeta/releases/latest/download/XTweakerSetupBeta.exe">Beta версия</a>
-        </div>
-    </div>
     <script>
         function toggleTheme() {
             document.body.classList.toggle('dark');
             document.querySelector('header').classList.toggle('dark');
             document.querySelector('footer').classList.toggle('dark');
-            document.querySelectorAll('.card').forEach(card => {
-                card.classList.toggle('dark');
-            });
-            document.querySelector('#modalContent').classList.toggle('dark');
         }
 
-        function showModal() {
-            document.getElementById('downloadModal').classList.add('show');
+        // Check for browser's dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark', 'no-transition');
+            document.querySelector('header').classList.add('dark');
+            document.querySelector('footer').classList.add('dark');
         }
-
-        function closeModal() {
-            document.getElementById('downloadModal').classList.remove('show');
-        }
-
-        function checkMobile() {
-            if (/Mobi|Android/i.test(navigator.userAgent)) {
-                document.getElementById('blur-background').style.display = 'block';
-                document.getElementById('mobile-message').style.display = 'block';
-            }
-        }
-
-        checkMobile();
     </script>
 </body>
 </html>
